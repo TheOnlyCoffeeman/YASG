@@ -2,11 +2,15 @@
 
 A simple, yet addictive Snake Game built with Python and Pygame. The game features a classic snake eating food to grow longer while avoiding collisions with itself and the screen borders.
 
-![Game Screenshot](img/snake.png)
+<p align="center">
+  <img src="img/snake.png" width="50%" height="auto">
+</p>
 
 This project is built using **Pygame** and packaged into an executable using **PyInstaller**. It supports Linux environments for building and running.
 
-![Pygame](img/pygame.png)
+<p align="center">
+  <img src="img/pygame.png" width="50%" height="auto">
+</p>
 
 ## **Features**
 - **Snake Game**: Control the snake to eat food and grow longer.
