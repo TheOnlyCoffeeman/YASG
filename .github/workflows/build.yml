@@ -34,7 +34,7 @@ jobs:
     - name: Build Windows executable
       run: |
         .\venv\Scripts\activate
-        pyinstaller --onefile --windowed --distpath ./build/windows --workpath ./temp --name YetAnotherSnakeGame main.py
+        pyinstaller --onefile --windowed --distpath ./build/windows --workpath ./temp --name YetAnotherSnakeGame src/main.py
 
     - name: Create Git tag
       run: |
