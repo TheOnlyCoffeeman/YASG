@@ -38,12 +38,12 @@ jobs:
     - name: Build Windows executable
       run: |
         .\venv\Scripts\activate
-        pyinstaller --onefile --windowed --distpath ./build_output/windows --workpath ./temp_build --name YetAnotherSnakeGame main.py
+        pyinstaller --onefile --windowed --distpath ./build/windows --workpath ./temp --name YetAnotherSnakeGame src/main.py
 
     # Upload the built .exe to GitHub Releases
     - name: Upload Windows executable to Releases
       uses: softprops/action-gh-release@v1
       with:
-        files: ./build_output/windows/YetAnotherSnakeGame.exe
+        files: ./build/windows/YetAnotherSnakeGame.exe
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
