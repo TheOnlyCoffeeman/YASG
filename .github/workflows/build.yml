@@ -1,0 +1,49 @@
+name: Build Windows Executable
+
+on:
+  push:
+    branches:
+      - main # Trigger the workflow on push to the main branch (you can change this as needed)
+  workflow_dispatch: # This allows you to trigger the workflow manually via the GitHub UI
+
+jobs:
+  build:
+    runs-on: windows-latest # Use the latest Windows runner from GitHub Actions
+    
+    steps:
+    # Checkout the repository
+    - name: Checkout repository
+      uses: actions/checkout@v2
+
+    # Set up Python
+    - name: Set up Python 3.8
+      uses: actions/setup-python@v2
+      with:
+        python-version: '3.8'  # Specify the Python version (can be adjusted to your needs)
+
+    # Install dependencies from requirements.txt
+    - name: Install dependencies
+      run: |
+        python -m venv venv
+        .\venv\Scripts\activate
+        pip install -r requirements.txt
+
+    # Install PyInstaller
+    - name: Install PyInstaller
+      run: |
+        .\venv\Scripts\activate
+        pip install pyinstaller
+
+    # Build the executable using PyInstaller
+    - name: Build Windows executable
+      run: |
+        .\venv\Scripts\activate
+        pyinstaller --onefile --windowed --distpath ./build_output/windows --workpath ./temp_build --name YetAnotherSnakeGame main.py
+
+    # Upload the built .exe to GitHub Releases
+    - name: Upload Windows executable to Releases
+      uses: softprops/action-gh-release@v1
+      with:
+        files: ./build_output/windows/YetAnotherSnakeGame.exe
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
