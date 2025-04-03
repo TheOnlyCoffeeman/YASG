@@ -3,12 +3,12 @@ name: Build Windows Executable
 on:
   push:
     branches:
-      - main # Trigger the workflow on push to the main branch (you can change this as needed)
-  workflow_dispatch: # This allows you to trigger the workflow manually via the GitHub UI
+      - main  # Trigger the workflow on push to the main branch
+  workflow_dispatch:  # Allows you to trigger the workflow manually via the GitHub UI
 
 jobs:
   build:
-    runs-on: windows-latest # Use the latest Windows runner from GitHub Actions
+    runs-on: windows-latest  # Use the latest Windows runner from GitHub Actions
     
     steps:
     # Checkout the repository
@@ -39,6 +39,13 @@ jobs:
       run: |
         .\venv\Scripts\activate
         pyinstaller --onefile --windowed --distpath ./build/windows --workpath ./temp --name YetAnotherSnakeGame src/main.py
+
+    # Create a new Git tag manually
+    - name: Create Git tag
+      run: |
+        TAG_NAME="v1.0.0"  # Specify your version tag here
+        git tag $TAG_NAME
+        git push origin $TAG_NAME
 
     # Upload the built .exe to GitHub Releases
     - name: Upload Windows executable to Releases
