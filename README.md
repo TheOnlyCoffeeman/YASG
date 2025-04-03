@@ -6,6 +6,8 @@ A simple, yet addictive Snake Game built with Python and Pygame. The game featur
 
 This project is built using **Pygame** and packaged into an executable using **PyInstaller**. It supports Linux environments for building and running.
 
+![Pygame](img/pygame.png)
+
 ## **Features**
 - **Snake Game**: Control the snake to eat food and grow longer.
 - **Game Over**: The game ends when the snake collides with the screen border or itself.
@@ -20,7 +22,9 @@ Before running or building the project, you need to install Python and the requi
 - **Python 3.x** (Python 3.6+ recommended)
 - **Pip** (Python's package manager)
 
-## Automatic installation
+## Installation
+
+### **Automatic (building executable)**
 
 Clone the repository and create a virtual environment:
 
@@ -28,6 +32,8 @@ Clone the repository and create a virtual environment:
 git clone https://github.com/YourUsername/YASG.git
 cd YASG
 make
+./build/YASG #linux/mac
+/build/YASG.exe #windows 
 ```
 
 ### **(Manual) Steps to Set Up the Virtual Environment**
