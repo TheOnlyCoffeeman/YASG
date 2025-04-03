@@ -1,0 +1,21 @@
+# Ignore the virtual environment directory
+venv/
+
+# Ignore Python bytecode files
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# Ignore build files and directories
+build/
+dist/
+*.spec
+*.egg-info/
+
+# Ignore the temporary build directory used by PyInstaller
+temp/
+
+# Ignore log files
+*.log
+game_log.txt
