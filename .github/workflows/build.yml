@@ -1,4 +1,4 @@
-name: Build Windows Executable
+name: Build Executable for Windows and Linux
 
 on:
   push:
@@ -7,50 +7,86 @@ on:
   workflow_dispatch:  # Allows you to trigger the workflow manually via the GitHub UI
 
 jobs:
-  build:
+  # Job for building Windows executable
+  build_windows:
     runs-on: windows-latest  # Use the latest Windows runner from GitHub Actions
     
     steps:
-    # Checkout the repository
     - name: Checkout repository
       uses: actions/checkout@v2
 
-    # Set up Python
     - name: Set up Python 3.8
       uses: actions/setup-python@v2
       with:
-        python-version: '3.8'  # Specify the Python version (can be adjusted to your needs)
+        python-version: '3.8'
 
-    # Install dependencies from requirements.txt
     - name: Install dependencies
       run: |
         python -m venv venv
         .\venv\Scripts\activate
         pip install -r requirements.txt
 
-    # Install PyInstaller
     - name: Install PyInstaller
       run: |
         .\venv\Scripts\activate
         pip install pyinstaller
 
-    # Build the executable using PyInstaller
     - name: Build Windows executable
       run: |
         .\venv\Scripts\activate
-        pyinstaller --onefile --windowed --distpath ./build/windows --workpath ./temp --name YetAnotherSnakeGame src/main.py
+        pyinstaller --onefile --windowed --distpath ./build/windows --workpath ./temp --name YetAnotherSnakeGame main.py
 
-    # Create a new Git tag manually
+    - name: Create Git tag
+      run: |
+        $env:TAG_NAME="v1.0.0"  # Specify your version tag here
+        git tag $env:TAG_NAME
+        git push origin $env:TAG_NAME
+
+    - name: Upload Windows executable to Releases
+      uses: softprops/action-gh-release@v1
+      with:
+        files: ./build/windows/YetAnotherSnakeGame.exe
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+  # Job for building Linux executable
+  build_linux:
+    runs-on: ubuntu-latest  # Use the latest Ubuntu runner for Linux
+    
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v2
+
+    - name: Set up Python 3.8
+      uses: actions/setup-python@v2
+      with:
+        python-version: '3.8'
+
+    - name: Install dependencies
+      run: |
+        python -m venv venv
+        source venv/bin/activate
+        pip install -r requirements.txt
+
+    - name: Install PyInstaller
+      run: |
+        source venv/bin/activate
+        pip install pyinstaller
+
+    - name: Build Linux executable
+      run: |
+        source venv/bin/activate
+        pyinstaller --onefile --windowed --distpath ./build/linux --workpath ./temp --name YetAnotherSnakeGame src/main.py
+
     - name: Create Git tag
       run: |
         TAG_NAME="v1.0.0"  # Specify your version tag here
         git tag $TAG_NAME
         git push origin $TAG_NAME
 
-    # Upload the built .exe to GitHub Releases
-    - name: Upload Windows executable to Releases
+    - name: Upload Linux executable to Releases
       uses: softprops/action-gh-release@v1
       with:
-        files: ./build/windows/YetAnotherSnakeGame.exe
+        files: ./build/linux/YetAnotherSnakeGame
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
