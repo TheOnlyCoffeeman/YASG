@@ -18,9 +18,8 @@ This project is built using **Pygame** and packaged into an executable using **P
 - **Score Display**: Track the current score while playing.
 - **Logging**: The score and gameplay time are logged to a text file after each game session.
 
-## **Prerequisites**
+## **Requirements**
 
-### **Requirements**
 Before running or building the project, you need to install Python and the required dependencies.
 
 - **Python 3.x** (Python 3.6+ recommended)
