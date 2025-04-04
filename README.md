@@ -10,6 +10,7 @@ This project is built using **Pygame** and packaged into an executable using **P
 
 <p align="center">
   <img src="img/pygame.png" width="50%" height="auto">
+  <img src="img/pyinstaller.png" width="50%" height="auto">
 </p>
 
 ## **Features**
@@ -32,7 +33,7 @@ Before running or building the project, you need to install Python and the requi
 Clone the repository and create a virtual environment:
 
 ```bash
-git clone https://github.com/YourUsername/YASG.git
+git clone https://github.com/TheOnlyCoffeeman/YASG.git
 cd YASG
 make
 ./build/YASG #linux/mac
