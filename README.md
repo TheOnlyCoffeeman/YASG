@@ -9,8 +9,8 @@ A simple, yet addictive Snake Game built with Python and Pygame. The game featur
 This project is built using **Pygame** and packaged into an executable using **PyInstaller**. It supports Linux environments for building and running.
 
 <p align="center">
-  <img src="img/pygame.png" width="50%" height="auto">
-  <img src="img/pyinstaller.png" width="50%" height="auto">
+  <img style="padding: 0px 0px 0px 50px;" src="img/pygame.png" width="50%" height="auto">
+  <img style="padding: 0px 0px 0px 50px;" src="img/pyinstaller.png" width="10%" height="auto">
 </p>
 
 ## **Features**
