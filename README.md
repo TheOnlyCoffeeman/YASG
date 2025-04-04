@@ -29,15 +29,15 @@ Before running or building the project, you need to install Python and the requi
 ## Installation
 
 ### **Automatic (building executable)**
+### !! Currently automatic build only works on Linux/Mac systems due to Makefile differences. If you are planning to run/build this project on Windows use the manual method !!
 
-Clone the repository and create a virtual environment:
+Clone the repository and build the project:
 
 ```bash
 git clone https://github.com/TheOnlyCoffeeman/YASG.git
 cd YASG
 make
-./build/YASG #linux/mac
-/build/YASG.exe #windows 
+./build/YASG
 ```
 
 ### **(Manual) Steps to Set Up the Virtual Environment**
