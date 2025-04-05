@@ -72,4 +72,4 @@ make
 
 To run the game directly from the Python environment, use:
 ```bash
-python main.py
+python src/main.py
