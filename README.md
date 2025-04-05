@@ -44,7 +44,7 @@ make
 
 1. Clone this repository:
     ```bash
-    git clone https://github.com/TheOnlyCoffeeman/YASG
+    git clone https://github.com/TheOnlyCoffeeman/YASG.git
     cd YASG
     ```
 
@@ -72,4 +72,4 @@ make
 
 To run the game directly from the Python environment, use:
 ```bash
-python src/main.py
+python3 src/main.py
